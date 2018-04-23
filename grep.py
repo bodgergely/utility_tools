@@ -2,12 +2,18 @@
 import subprocess
 import sys
 
+def handle_pattern(pattern):
+    if ' ' in pattern or '\t' in patters:
+        pattern = '\"' + pattern + '\"'
+    return pattern
+
 def grep(pattern, extensions, directory):
     includes = ""
     if extensions:
         inc = "--include="
         includes = " ".join([inc + "*." + ext for ext in extensions])
-   
+  
+    pattern = handle_pattern(pattern)
     cmd = f'grep -R {pattern} {includes} {directory}'
     print(cmd)
     subprocess.call(cmd, shell=True)
