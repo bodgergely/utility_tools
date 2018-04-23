@@ -3,14 +3,17 @@ import subprocess
 import sys
 
 def grep(pattern, extensions, directory):
-    extoption = ""
-    if len(extensions) > 0:
-        extensions = ["*." + ext for ext in extensions]
-        extpattern = ",".join(extensions)
-        extoption = f"--include=\"{extpattern}\""
+    includes = ""
+    if extensions:
+        inc = "--include="
+        includes = " ".join([inc + "*." + ext for ext in extensions])
    
-    cmd = f'grep -R {pattern} {extoption} {directory}'
+    cmd = f'grep -R {pattern} {includes} {directory}'
+    print(cmd)
     subprocess.call(cmd, shell=True)
 
 if __name__ == "__main__":
-    grep(sys.argv[1], sys.argv[2:], '.')
+    extensions = []
+    if len(sys.argv) > 2:
+        extensions = sys.argv[2].split(',')
+    grep(sys.argv[1], extensions, '.')
