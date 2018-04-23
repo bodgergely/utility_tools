@@ -3,7 +3,7 @@ import subprocess
 import sys
 
 def handle_pattern(pattern):
-    if ' ' in pattern or '\t' in patters:
+    if ' ' in pattern or '\t' in pattern:
         pattern = '\"' + pattern + '\"'
     return pattern
 
