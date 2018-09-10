@@ -5,7 +5,7 @@ import sys
 
 def main_body():
     return  """
-int main(int argc, char* argv[])
+int main(int argc, char** argv)
 {
 
     return 0;
