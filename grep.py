@@ -14,7 +14,7 @@ def grep(pattern, extensions, directory):
         includes = " ".join([inc + "*." + ext for ext in extensions])
   
     pattern = handle_pattern(pattern)
-    cmd = f'grep --color -R {pattern} {includes} {directory}'
+    cmd = f'grep --color -n -R {pattern} {includes} {directory}'
     print(cmd)
     subprocess.call(cmd, shell=True)
 
