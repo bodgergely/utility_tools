@@ -15,7 +15,7 @@ def grep(pattern, extensions, directory):
   
     pattern = handle_pattern(pattern)
     cmd = f'grep --color -n -R {pattern} {includes} {directory}'
-    print(cmd)
+    #print(cmd)
     subprocess.call(cmd, shell=True)
 
 if __name__ == "__main__":
